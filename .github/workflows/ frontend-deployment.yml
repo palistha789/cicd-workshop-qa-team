@@ -57,8 +57,9 @@ jobs:
           --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
           --paths "/*"
     - name: cypress e2e test
+      working-directory: ./frontend
       run: |
-        cypress:run
+        npx cypress run
       env: 
         CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL}}
         CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL}}
