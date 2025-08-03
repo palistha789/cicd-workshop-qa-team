@@ -59,7 +59,7 @@ jobs:
     - name: cypress e2e test
       working-directory: ./e2e-tests
       run: |
-        npm run cypress:run
+        npx cypress run
       env: 
         CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL}}
         CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL}}
