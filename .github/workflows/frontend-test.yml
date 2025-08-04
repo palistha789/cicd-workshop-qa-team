@@ -1,0 +1,37 @@
+name: Frontend Test
+on:
+  pull_request:
+    branches:
+        - main
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        # cache: 'npm'
+    
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: npm install
+    
+    - name: Run unit tests
+      working-directory: ./frontend
+      run: npm run test:unit
+    
+    - name: Run integration tests
+      working-directory: ./frontend
+      run: npm run test:integration
+    
+    - name: Run all tests with coverage
+      working-directory: ./frontend
+      run: npm test
+
+   
